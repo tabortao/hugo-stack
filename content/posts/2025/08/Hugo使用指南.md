@@ -176,7 +176,7 @@ hugo
 ## 主题推荐
 - 简洁清爽 [LoveIt](https://github.com/dillonzq/LoveIt)   [效果：飞哥聊AI](https://www.ffeeii.com/)
 - 美观漂亮 [Stack](https://github.com/CaiJimmy/hugo-theme-stack) [效果：第三夏尔](https://thirdshire.com/)
-- 极简主题 [Meteor](https://github.com/anghunk/meteor) [效果：子舒的博客](https://zishu.me/)，折腾了半天Stack，发现Meteor，发现自己更喜欢这种简约，学习作者博客[hugo-blog](https://github.com/anghunk/hugo-blog)
+- 极简主题 [Meteor](https://github.com/anghunk/meteor) [效果：子舒的博客](https://zishu.me/) [hugo-blog](https://github.com/anghunk/hugo-blog)
 
 ## 参考博客
 
