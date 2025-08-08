@@ -1,73 +1,68 @@
 name: Deploy to Github Pages
 
 on:
-    push:
-        branches: [master]
-    pull_request:
-        branches: [master]
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
-    # Build job: 在 push 和 pull_request 时都会运行，用于验证构建
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  # 仅拉取最新的 commit，除非你的主题需要完整的 git 历史
-                  fetch-depth: 1
+  # Build job: 在 push 和 pull_request 时都会运行，用于验证构建
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-            - name: Setup Hugo
-              uses: peaceiris/actions-hugo@v3 # 推荐使用 v3 或更高版本
-              with:
-                  # 锁定 Hugo 版本以保证构建稳定
-                  hugo-version: "0.146.0" # 请替换为您希望使用的具体版本
-                  extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.125.4" # 建议锁定具体版本
+          extended: true
 
-            - name: Cache Hugo resources
-              uses: actions/cache@v4
-              with:
-                  path: resources
-                  # 修正缓存 key，当配置文件或依赖变化时更新缓存
-                  key: ${{ runner.os }}-hugo-resources-${{ hashFiles('**/hugo.toml', '**/go.sum') }}
-                  restore-keys: |
-                      ${{ runner.os }}-hugo-resources-
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: resources
+          key: ${{ runner.os }}-hugo-resources-${{ hashFiles('**/hugo.toml', '**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-resources-
 
-            - name: Build
-              run: hugo --minify --gc
+      - name: Build
+        run: hugo --minify --gc
 
-            - name: Upload artifact
-              # 将构建产物（public 目录）上传，供后续的 deploy job 使用
-              uses: actions/upload-artifact@v4
-              with:
-                  name: github-pages
-                  path: ./public
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./public
 
-    # Deploy job: 仅在 push到 master 分支时运行
-    deploy:
-        # 设置运行条件：必须是 push 到 master 分支的事件
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        # 设置依赖：必须在 build job 成功后运行
-        needs: build
-        
-        runs-on: ubuntu-latest
+  # Deploy job: 仅在 push到 master 分支时运行
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-        permissions:
-            # gh-pages 部署需要 contents: write 权限
-            contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-        steps:
-            - name: Download artifact
-              # 从 build job 下载构建产物
-              uses: actions/download-artifact@v4
-              with:
-                  name: github-pages
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: ./public
 
-            - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@v4
-              with:
-                  branch: gh-pages
-                  # folder 指定为 . 因为我们已经下载并处于 artifact 的根目录
-                  folder: .
-                  clean: true
-                  single-commit: true
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public
+          clean: true
+          single-commit: true
