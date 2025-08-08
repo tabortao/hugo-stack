@@ -1,7 +1,7 @@
 +++
 title = 'Hugo Stack 主题美化修改'
 date = '2025-08-08T14:23:04+08:00'
-draft = true
+draft = false
 categories = ["建站"]
 tags = ["Hugo"]
 author = "Tabor"
