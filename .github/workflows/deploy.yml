@@ -41,11 +41,11 @@ jobs:
 
             - name: Build
               run: hugo --minify --gc
-
+            
             - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@v4
+              uses: peaceiris/actions-gh-pages@v3
               with:
-                  branch: gh-pages
-                  folder: public
-                  clean: true
-                  single-commit: true
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_branch: gh-pages
+                publish_dir: ./public
+                force_orphan: true
