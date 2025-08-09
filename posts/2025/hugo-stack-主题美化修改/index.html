@@ -1,0 +1,1055 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='全局 零碎 在 /assets/scss/custom.scss 中加入以下代码\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 // 页面基本配色 :root { // 全局顶部边距 --main-top-padding: 30px; // 全局卡片圆角 --card-border-radius: 25px; // 标签云卡片圆角 --tag-border-radius: 8px; // 卡片间距 --section-separation: 40px; // 全局字体大小 --article-font-size: 1.8rem; // 行内代码背景色 --code-background-color: #f8f8f8; // 行内代码前景色 --code-text-color: #e96900; // 暗色模式下样式 &[data-scheme="dark"] { // 行内代码背景色 --code-background-color: #ff6d1b17; // 行内代码前景色 --code-text-color: #e96900; } } //------------------------------------------------------ // 修复引用块内容窄页面显示问题 a { word-break: break-all; } code { word-break: break-all; } //--------------------------------------------------- // 文章内容图片圆角阴影 .article-page .main-article .article-content { img { max-width: 96% !important; height: auto !important; border-radius: 8px; } } //------------------------------------------------ // 文章内容引用块样式 .article-content { blockquote { border-left: 6px solid #358b9a1f !important; background: #3a97431f; } } // --------------------------------------- // 代码块基础样式修改 .highlight { max-width: 102% !important; background-color: var(--pre-background-color); padding: var(--card-padding); position: relative; border-radius: 20px; margin-left: -7px !important; margin-right: -12px; box-shadow: var(--shadow-l1) !important; &:hover { .copyCodeButton { opacity: 1; } } // keep Codeblocks LTR [dir="rtl"] & { direction: ltr; } pre { margin: initial; padding: 0; margin: 0; width: auto; } } // light模式下的代码块样式调整 [data-scheme="light"] .article-content .highlight { background-color: #fff9f3; } [data-scheme="light"] .chroma { color: #ff6f00; background-color: #fff9f3cc; } //------------------------------------------- // 设置选中字体的区域背景颜色 //修改选中颜色 ::selection { color: #fff; background: #34495e; } a { text-decoration: none; color: var(--accent-color); &:hover { color: var(--accent-color-darker); } &.link { color: #4288b9ad; font-weight: 600; padding: 0 2px; text-decoration: none; cursor: pointer; &:hover { text-decoration: underline; } } } //------------------------------------------------- //文章封面高度更改 .article-list article .article-image img { width: 100%; height: 150px; object-fit: cover; @include respond(md) { height: 200px; } @include respond(xl) { height: 305px; } } //--------------------------------------------------- // 全局页面布局间距调整 .main-container { min-height: 100vh; align-items: flex-start; padding: 0 15px; gap: var(--section-separation); padding-top: var(--main-top-padding); @include respond(md) { padding: 0 37px; } } //-------------------------------------------------- //页面三栏宽度调整 .container { margin-left: auto; margin-right: auto; .left-sidebar { order: -3; max-width: var(--left-sidebar-max-width); } .right-sidebar { order: -1; max-width: var(--right-sidebar-max-width); /// Display right sidebar when min-width: lg @include respond(lg) { display: flex; } } &.extended { @include respond(md) { max-width: 1024px; --left-sidebar-max-width: 25%; --right-sidebar-max-width: 22% !important; } @include respond(lg) { max-width: 1280px; --left-sidebar-max-width: 20%; --right-sidebar-max-width: 30%; } @include respond(xl) { max-width: 1453px; //1536px; --left-sidebar-max-width: 15%; --right-sidebar-max-width: 25%; } } &.compact { @include respond(md) { --left-sidebar-max-width: 25%; max-width: 768px; } @include respond(lg) { max-width: 1024px; --left-sidebar-max-width: 20%; } @include respond(xl) { max-width: 1280px; } } } //------------------------------------------------------- //全局页面小图片样式微调 .article-list--compact article .article-image img { width: var(--image-size); height: var(--image-size); object-fit: cover; border-radius: 17%; } 菜单栏圆角 在 /assets/scss/custom.scss 中加入以下代码：\n'><title>Hugo Stack 主题美化修改</title>
+<link rel=canonical href=https://tabortao.github.io/hugo-stack/posts/2025/hugo-stack-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%BF%AE%E6%94%B9/><link rel=stylesheet href=/hugo-stack/scss/style.min.0421f5061f027a6c11ea08eb4a8d48a4f3aa531409653c1b9e2f6fe41159538d.css><meta property='og:title' content="Hugo Stack 主题美化修改"><meta property='og:description' content='全局 零碎 在 /assets/scss/custom.scss 中加入以下代码\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 // 页面基本配色 :root { // 全局顶部边距 --main-top-padding: 30px; // 全局卡片圆角 --card-border-radius: 25px; // 标签云卡片圆角 --tag-border-radius: 8px; // 卡片间距 --section-separation: 40px; // 全局字体大小 --article-font-size: 1.8rem; // 行内代码背景色 --code-background-color: #f8f8f8; // 行内代码前景色 --code-text-color: #e96900; // 暗色模式下样式 &[data-scheme="dark"] { // 行内代码背景色 --code-background-color: #ff6d1b17; // 行内代码前景色 --code-text-color: #e96900; } } //------------------------------------------------------ // 修复引用块内容窄页面显示问题 a { word-break: break-all; } code { word-break: break-all; } //--------------------------------------------------- // 文章内容图片圆角阴影 .article-page .main-article .article-content { img { max-width: 96% !important; height: auto !important; border-radius: 8px; } } //------------------------------------------------ // 文章内容引用块样式 .article-content { blockquote { border-left: 6px solid #358b9a1f !important; background: #3a97431f; } } // --------------------------------------- // 代码块基础样式修改 .highlight { max-width: 102% !important; background-color: var(--pre-background-color); padding: var(--card-padding); position: relative; border-radius: 20px; margin-left: -7px !important; margin-right: -12px; box-shadow: var(--shadow-l1) !important; &:hover { .copyCodeButton { opacity: 1; } } // keep Codeblocks LTR [dir="rtl"] & { direction: ltr; } pre { margin: initial; padding: 0; margin: 0; width: auto; } } // light模式下的代码块样式调整 [data-scheme="light"] .article-content .highlight { background-color: #fff9f3; } [data-scheme="light"] .chroma { color: #ff6f00; background-color: #fff9f3cc; } //------------------------------------------- // 设置选中字体的区域背景颜色 //修改选中颜色 ::selection { color: #fff; background: #34495e; } a { text-decoration: none; color: var(--accent-color); &:hover { color: var(--accent-color-darker); } &.link { color: #4288b9ad; font-weight: 600; padding: 0 2px; text-decoration: none; cursor: pointer; &:hover { text-decoration: underline; } } } //------------------------------------------------- //文章封面高度更改 .article-list article .article-image img { width: 100%; height: 150px; object-fit: cover; @include respond(md) { height: 200px; } @include respond(xl) { height: 305px; } } //--------------------------------------------------- // 全局页面布局间距调整 .main-container { min-height: 100vh; align-items: flex-start; padding: 0 15px; gap: var(--section-separation); padding-top: var(--main-top-padding); @include respond(md) { padding: 0 37px; } } //-------------------------------------------------- //页面三栏宽度调整 .container { margin-left: auto; margin-right: auto; .left-sidebar { order: -3; max-width: var(--left-sidebar-max-width); } .right-sidebar { order: -1; max-width: var(--right-sidebar-max-width); /// Display right sidebar when min-width: lg @include respond(lg) { display: flex; } } &.extended { @include respond(md) { max-width: 1024px; --left-sidebar-max-width: 25%; --right-sidebar-max-width: 22% !important; } @include respond(lg) { max-width: 1280px; --left-sidebar-max-width: 20%; --right-sidebar-max-width: 30%; } @include respond(xl) { max-width: 1453px; //1536px; --left-sidebar-max-width: 15%; --right-sidebar-max-width: 25%; } } &.compact { @include respond(md) { --left-sidebar-max-width: 25%; max-width: 768px; } @include respond(lg) { max-width: 1024px; --left-sidebar-max-width: 20%; } @include respond(xl) { max-width: 1280px; } } } //------------------------------------------------------- //全局页面小图片样式微调 .article-list--compact article .article-image img { width: var(--image-size); height: var(--image-size); object-fit: cover; border-radius: 17%; } 菜单栏圆角 在 /assets/scss/custom.scss 中加入以下代码：\n'><meta property='og:url' content='https://tabortao.github.io/hugo-stack/posts/2025/hugo-stack-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%BF%AE%E6%94%B9/'><meta property='og:site_name' content='Peach'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Hugo'><meta property='article:published_time' content='2025-08-08T14:23:04+08:00'><meta property='article:modified_time' content='2025-08-08T14:23:04+08:00'><meta name=twitter:title content="Hugo Stack 主题美化修改"><meta name=twitter:description content='全局 零碎 在 /assets/scss/custom.scss 中加入以下代码\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 // 页面基本配色 :root { // 全局顶部边距 --main-top-padding: 30px; // 全局卡片圆角 --card-border-radius: 25px; // 标签云卡片圆角 --tag-border-radius: 8px; // 卡片间距 --section-separation: 40px; // 全局字体大小 --article-font-size: 1.8rem; // 行内代码背景色 --code-background-color: #f8f8f8; // 行内代码前景色 --code-text-color: #e96900; // 暗色模式下样式 &[data-scheme="dark"] { // 行内代码背景色 --code-background-color: #ff6d1b17; // 行内代码前景色 --code-text-color: #e96900; } } //------------------------------------------------------ // 修复引用块内容窄页面显示问题 a { word-break: break-all; } code { word-break: break-all; } //--------------------------------------------------- // 文章内容图片圆角阴影 .article-page .main-article .article-content { img { max-width: 96% !important; height: auto !important; border-radius: 8px; } } //------------------------------------------------ // 文章内容引用块样式 .article-content { blockquote { border-left: 6px solid #358b9a1f !important; background: #3a97431f; } } // --------------------------------------- // 代码块基础样式修改 .highlight { max-width: 102% !important; background-color: var(--pre-background-color); padding: var(--card-padding); position: relative; border-radius: 20px; margin-left: -7px !important; margin-right: -12px; box-shadow: var(--shadow-l1) !important; &:hover { .copyCodeButton { opacity: 1; } } // keep Codeblocks LTR [dir="rtl"] & { direction: ltr; } pre { margin: initial; padding: 0; margin: 0; width: auto; } } // light模式下的代码块样式调整 [data-scheme="light"] .article-content .highlight { background-color: #fff9f3; } [data-scheme="light"] .chroma { color: #ff6f00; background-color: #fff9f3cc; } //------------------------------------------- // 设置选中字体的区域背景颜色 //修改选中颜色 ::selection { color: #fff; background: #34495e; } a { text-decoration: none; color: var(--accent-color); &:hover { color: var(--accent-color-darker); } &.link { color: #4288b9ad; font-weight: 600; padding: 0 2px; text-decoration: none; cursor: pointer; &:hover { text-decoration: underline; } } } //------------------------------------------------- //文章封面高度更改 .article-list article .article-image img { width: 100%; height: 150px; object-fit: cover; @include respond(md) { height: 200px; } @include respond(xl) { height: 305px; } } //--------------------------------------------------- // 全局页面布局间距调整 .main-container { min-height: 100vh; align-items: flex-start; padding: 0 15px; gap: var(--section-separation); padding-top: var(--main-top-padding); @include respond(md) { padding: 0 37px; } } //-------------------------------------------------- //页面三栏宽度调整 .container { margin-left: auto; margin-right: auto; .left-sidebar { order: -3; max-width: var(--left-sidebar-max-width); } .right-sidebar { order: -1; max-width: var(--right-sidebar-max-width); /// Display right sidebar when min-width: lg @include respond(lg) { display: flex; } } &.extended { @include respond(md) { max-width: 1024px; --left-sidebar-max-width: 25%; --right-sidebar-max-width: 22% !important; } @include respond(lg) { max-width: 1280px; --left-sidebar-max-width: 20%; --right-sidebar-max-width: 30%; } @include respond(xl) { max-width: 1453px; //1536px; --left-sidebar-max-width: 15%; --right-sidebar-max-width: 25%; } } &.compact { @include respond(md) { --left-sidebar-max-width: 25%; max-width: 768px; } @include respond(lg) { max-width: 1024px; --left-sidebar-max-width: 20%; } @include respond(xl) { max-width: 1280px; } } } //------------------------------------------------------- //全局页面小图片样式微调 .article-list--compact article .article-image img { width: var(--image-size); height: var(--image-size); object-fit: cover; border-radius: 17%; } 菜单栏圆角 在 /assets/scss/custom.scss 中加入以下代码：\n'><link rel="shortcut icon" href=/hugo-stack/img/peach-icon.svg></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/hugo-stack/><img src=/hugo-stack/img/avatar_hu_879319cb59536d87.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍑</span></figure><div class=site-meta><h1 class=site-name><a href=/hugo-stack>Peach</a></h1><h2 class=site-description>分享技术，记录生活</h2></div></header><ol class=menu id=main-menu><li><a href=/hugo-stack/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>主页</span></a></li><li><a href=/hugo-stack/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>归档</span></a></li><li><a href=/hugo-stack/archives><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>归档</span></a></li><li><a href=/hugo-stack/about><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#全局>全局</a><ul><li><a href=#零碎>零碎</a></li><li><a href=#菜单栏圆角>菜单栏圆角</a></li><li><a href=#滚动条>滚动条</a></li><li><a href=#加载进度条>加载进度条</a></li><li><a href=#修改布局>修改布局</a></li><li><a href=#在归档页增加标签云tags>在归档页增加标签云Tags</a></li></ul></li><li><a href=#页面>页面</a><ul><li><a href=#归档>归档</a><ul><li><a href=#双栏>双栏</a></li><li><a href=#卡片缩放动画>卡片缩放动画</a></li></ul></li><li><a href=#友链三栏>友链三栏</a></li><li><a href=#首页>首页</a><ul><li><a href=#布局>布局</a></li><li><a href=#右侧导航栏动画>右侧导航栏动画</a></li></ul></li></ul></li><li><a href=#细节>细节</a><ul><li><a href=#代码块>代码块</a><ul><li><a href=#macos-风格红绿灯图标>macOS 风格红绿灯图标</a></li></ul></li><li><a href=#固定块的高度>固定块的高度</a></li><li><a href=#使图床链接的图片居中>使图床链接的图片居中</a></li></ul></li><li><a href=#鸣谢>鸣谢</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/hugo-stack/categories/%E5%BB%BA%E7%AB%99/>建站</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/hugo-stack/posts/2025/hugo-stack-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%BF%AE%E6%94%B9/>Hugo Stack 主题美化修改</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2025年08月08日</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 5 分钟</time></div></footer></div></header><section class=article-content><h2 id=全局>全局</h2><h3 id=零碎>零碎</h3><p>在 /assets/scss/custom.scss 中加入以下代码</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span><span class=lnt>144
+</span><span class=lnt>145
+</span><span class=lnt>146
+</span><span class=lnt>147
+</span><span class=lnt>148
+</span><span class=lnt>149
+</span><span class=lnt>150
+</span><span class=lnt>151
+</span><span class=lnt>152
+</span><span class=lnt>153
+</span><span class=lnt>154
+</span><span class=lnt>155
+</span><span class=lnt>156
+</span><span class=lnt>157
+</span><span class=lnt>158
+</span><span class=lnt>159
+</span><span class=lnt>160
+</span><span class=lnt>161
+</span><span class=lnt>162
+</span><span class=lnt>163
+</span><span class=lnt>164
+</span><span class=lnt>165
+</span><span class=lnt>166
+</span><span class=lnt>167
+</span><span class=lnt>168
+</span><span class=lnt>169
+</span><span class=lnt>170
+</span><span class=lnt>171
+</span><span class=lnt>172
+</span><span class=lnt>173
+</span><span class=lnt>174
+</span><span class=lnt>175
+</span><span class=lnt>176
+</span><span class=lnt>177
+</span><span class=lnt>178
+</span><span class=lnt>179
+</span><span class=lnt>180
+</span><span class=lnt>181
+</span><span class=lnt>182
+</span><span class=lnt>183
+</span><span class=lnt>184
+</span><span class=lnt>185
+</span><span class=lnt>186
+</span><span class=lnt>187
+</span><span class=lnt>188
+</span><span class=lnt>189
+</span><span class=lnt>190
+</span><span class=lnt>191
+</span><span class=lnt>192
+</span><span class=lnt>193
+</span><span class=lnt>194
+</span><span class=lnt>195
+</span><span class=lnt>196
+</span><span class=lnt>197
+</span><span class=lnt>198
+</span><span class=lnt>199
+</span><span class=lnt>200
+</span><span class=lnt>201
+</span><span class=lnt>202
+</span><span class=lnt>203
+</span><span class=lnt>204
+</span><span class=lnt>205
+</span><span class=lnt>206
+</span><span class=lnt>207
+</span><span class=lnt>208
+</span><span class=lnt>209
+</span><span class=lnt>210
+</span><span class=lnt>211
+</span><span class=lnt>212
+</span><span class=lnt>213
+</span><span class=lnt>214
+</span><span class=lnt>215
+</span><span class=lnt>216
+</span><span class=lnt>217
+</span><span class=lnt>218
+</span><span class=lnt>219
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span> <span class=nt>页面基本配色</span>
+</span></span><span class=line><span class=cl><span class=p>:</span><span class=nd>root</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>全局顶部边距</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--main-top-padding</span><span class=p>:</span> <span class=mi>30</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>全局卡片圆角</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--card-border-radius</span><span class=p>:</span> <span class=mi>25</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>标签云卡片圆角</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--tag-border-radius</span><span class=p>:</span> <span class=mi>8</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>卡片间距</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--section-separation</span><span class=p>:</span> <span class=mi>40</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>全局字体大小</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--article-font-size</span><span class=p>:</span> <span class=mf>1.8</span><span class=kt>rem</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>行内代码背景色</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--code-background-color</span><span class=p>:</span> <span class=mh>#f8f8f8</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>行内代码前景色</span>
+</span></span><span class=line><span class=cl>  <span class=nv>--code-text-color</span><span class=p>:</span> <span class=mh>#e96900</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=err>暗色模式下样式</span>
+</span></span><span class=line><span class=cl>  <span class=err>&amp;[data-scheme=&#34;dark&#34;]</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=err>//</span> <span class=err>行内代码背景色</span>
+</span></span><span class=line><span class=cl>    <span class=nv>--code-background-color</span><span class=p>:</span> <span class=mh>#ff6d1b</span><span class=mi>17</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=err>//</span> <span class=err>行内代码前景色</span>
+</span></span><span class=line><span class=cl>    <span class=nv>--code-text-color</span><span class=p>:</span> <span class=mh>#e96900</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>------------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>修复引用块内容窄页面显示问题</span>
+</span></span><span class=line><span class=cl><span class=nt>a</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>word-break</span><span class=p>:</span> <span class=n>break-all</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>code</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>word-break</span><span class=p>:</span> <span class=n>break-all</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>---------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>文章内容图片圆角阴影</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-page</span> <span class=p>.</span><span class=nc>main-article</span> <span class=p>.</span><span class=nc>article-content</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=err>img</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>max-width</span><span class=p>:</span> <span class=mi>96</span><span class=kt>%</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>height</span><span class=p>:</span> <span class=kc>auto</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>border-radius</span><span class=p>:</span> <span class=mi>8</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>文章内容引用块样式</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-content</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=err>blockquote</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>border-left</span><span class=p>:</span> <span class=mi>6</span><span class=kt>px</span> <span class=kc>solid</span> <span class=mh>#358b9a</span><span class=mi>1</span><span class=n>f</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background</span><span class=p>:</span> <span class=mh>#3a9743</span><span class=mi>1</span><span class=n>f</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>---------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>代码块基础样式修改</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>highlight</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>max-width</span><span class=p>:</span> <span class=mi>102</span><span class=kt>%</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>background-color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=kc>pre</span><span class=o>-</span><span class=n>background</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>padding</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>card</span><span class=o>-</span><span class=n>padding</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>position</span><span class=p>:</span> <span class=kc>relative</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>border-radius</span><span class=p>:</span> <span class=mi>20</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>margin-left</span><span class=p>:</span> <span class=mi>-7</span><span class=kt>px</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>margin-right</span><span class=p>:</span> <span class=mi>-12</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>box-shadow</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>shadow</span><span class=o>-</span><span class=n>l1</span><span class=p>)</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>&amp;:hover</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=err>.copyCodeButton</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>opacity</span><span class=p>:</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=o>//</span> <span class=nt>keep</span> <span class=nt>Codeblocks</span> <span class=nt>LTR</span>
+</span></span><span class=line><span class=cl>  <span class=o>[</span><span class=nt>dir</span><span class=o>=</span><span class=s2>&#34;rtl&#34;</span><span class=o>]</span> <span class=o>&amp;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>direction</span><span class=p>:</span> <span class=kc>ltr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=nt>pre</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>margin</span><span class=p>:</span> <span class=kc>initial</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>margin</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>width</span><span class=p>:</span> <span class=kc>auto</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>light模式下的代码块样式调整</span>
+</span></span><span class=line><span class=cl><span class=o>[</span><span class=nt>data-scheme</span><span class=o>=</span><span class=s2>&#34;light&#34;</span><span class=o>]</span> <span class=p>.</span><span class=nc>article-content</span> <span class=p>.</span><span class=nc>highlight</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#fff9f3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span><span class=nt>data-scheme</span><span class=o>=</span><span class=s2>&#34;light&#34;</span><span class=o>]</span> <span class=p>.</span><span class=nc>chroma</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>color</span><span class=p>:</span> <span class=mh>#ff6f00</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>background-color</span><span class=p>:</span> <span class=mh>#fff9f3</span><span class=n>cc</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>-------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>设置选中字体的区域背景颜色</span>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>修改选中颜色</span>
+</span></span><span class=line><span class=cl><span class=p>::</span><span class=nd>selection</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>color</span><span class=p>:</span> <span class=mh>#fff</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>background</span><span class=p>:</span> <span class=mh>#34495e</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nt>a</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>text-decoration</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>accent</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>&amp;:hover</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>accent</span><span class=o>-</span><span class=kc>color</span><span class=o>-</span><span class=n>darker</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=o>&amp;</span><span class=p>.</span><span class=nc>link</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>color</span><span class=p>:</span> <span class=mh>#4288b9</span><span class=n>ad</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>font-weight</span><span class=p>:</span> <span class=mi>600</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span> <span class=mi>2</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>text-decoration</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>cursor</span><span class=p>:</span> <span class=kc>pointer</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=err>&amp;:hover</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>text-decoration</span><span class=p>:</span> <span class=kc>underline</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>-------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>文章封面高度更改</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-list</span> <span class=nt>article</span> <span class=p>.</span><span class=nc>article-image</span> <span class=nt>img</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>width</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>height</span><span class=p>:</span> <span class=mi>150</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>object-fit</span><span class=p>:</span> <span class=kc>cover</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>@include</span> <span class=err>respond(md)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>height</span><span class=p>:</span> <span class=mi>200</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>@</span><span class=k>include</span> <span class=nt>respond</span><span class=o>(</span><span class=nt>xl</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>height</span><span class=o>:</span> <span class=nt>305px</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>---------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>全局页面布局间距调整</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>main-container</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>min-height</span><span class=p>:</span> <span class=mi>100</span><span class=kt>vh</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>align-items</span><span class=p>:</span> <span class=kc>flex-start</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span> <span class=mi>15</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>gap</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>section</span><span class=o>-</span><span class=n>separation</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>padding-top</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>main</span><span class=o>-</span><span class=kc>top</span><span class=o>-</span><span class=n>padding</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>@include</span> <span class=err>respond(md)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span> <span class=mi>37</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>--------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>页面三栏宽度调整</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>container</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>margin-left</span><span class=p>:</span> <span class=kc>auto</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>margin-right</span><span class=p>:</span> <span class=kc>auto</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>.left-sidebar</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>order</span><span class=p>:</span> <span class=mi>-3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>max-width</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=kc>left</span><span class=o>-</span><span class=n>sidebar</span><span class=o>-</span><span class=n>max</span><span class=o>-</span><span class=n>width</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nc>right-sidebar</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>order</span><span class=p>:</span> <span class=mi>-1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>max-width</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=kc>right</span><span class=o>-</span><span class=n>sidebar</span><span class=o>-</span><span class=n>max</span><span class=o>-</span><span class=n>width</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=err>///</span> <span class=err>Display</span> <span class=err>right</span> <span class=err>sidebar</span> <span class=err>when</span> <span class=k>min-width</span><span class=p>:</span> <span class=n>lg</span>
+</span></span><span class=line><span class=cl>    <span class=o>@</span><span class=n>include</span> <span class=nf>respond</span><span class=p>(</span><span class=n>lg</span><span class=p>)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>display</span><span class=o>:</span> <span class=kc>flex</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=o>&amp;</span><span class=p>.</span><span class=nc>extended</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=err>@include</span> <span class=err>respond(md)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>max-width</span><span class=p>:</span> <span class=mi>1024</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=nv>--left-sidebar-max-width</span><span class=p>:</span> <span class=mi>25</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=nv>--right-sidebar-max-width</span><span class=p>:</span> <span class=mi>22</span><span class=kt>%</span> <span class=cp>!important</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>@</span><span class=k>include</span> <span class=nt>respond</span><span class=o>(</span><span class=nt>lg</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>max-width</span><span class=o>:</span> <span class=nt>1280px</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>--left-sidebar-max-width</span><span class=o>:</span> <span class=nt>20</span><span class=o>%;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>--right-sidebar-max-width</span><span class=o>:</span> <span class=nt>30</span><span class=o>%;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>@</span><span class=k>include</span> <span class=nt>respond</span><span class=o>(</span><span class=nt>xl</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>max-width</span><span class=o>:</span> <span class=nt>1453px</span><span class=o>;</span> <span class=o>//</span><span class=nt>1536px</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>--left-sidebar-max-width</span><span class=o>:</span> <span class=nt>15</span><span class=o>%;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>--right-sidebar-max-width</span><span class=o>:</span> <span class=nt>25</span><span class=o>%;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=o>&amp;</span><span class=p>.</span><span class=nc>compact</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=err>@include</span> <span class=err>respond(md)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=nv>--left-sidebar-max-width</span><span class=p>:</span> <span class=mi>25</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>max-width</span><span class=p>:</span> <span class=mi>768</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>@</span><span class=k>include</span> <span class=nt>respond</span><span class=o>(</span><span class=nt>lg</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>max-width</span><span class=o>:</span> <span class=nt>1024px</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>--left-sidebar-max-width</span><span class=o>:</span> <span class=nt>20</span><span class=o>%;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>@</span><span class=k>include</span> <span class=nt>respond</span><span class=o>(</span><span class=nt>xl</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>max-width</span><span class=o>:</span> <span class=nt>1280px</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>-------------------------------------------------------</span>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>全局页面小图片样式微调</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-list--compact</span> <span class=nt>article</span> <span class=p>.</span><span class=nc>article-image</span> <span class=nt>img</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>width</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>image</span><span class=o>-</span><span class=n>size</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>height</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>image</span><span class=o>-</span><span class=n>size</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>object-fit</span><span class=p>:</span> <span class=kc>cover</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>border-radius</span><span class=p>:</span> <span class=mi>17</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=菜单栏圆角>菜单栏圆角</h3><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span> <span class=nt>菜单栏样式</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>下拉菜单改圆角样式</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>menu</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>padding-left</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>list-style</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>flex-direction</span><span class=p>:</span> <span class=kc>column</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>overflow-x</span><span class=p>:</span> <span class=kc>hidden</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>overflow-y</span><span class=p>:</span> <span class=kc>scroll</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>flex-grow</span><span class=p>:</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>font-size</span><span class=p>:</span> <span class=mf>1.6</span><span class=kt>rem</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>background-color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>card</span><span class=o>-</span><span class=n>background</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=k>box-shadow</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>shadow</span><span class=o>-</span><span class=n>l2</span><span class=p>);</span> <span class=err>//改个阴影</span>
+</span></span><span class=line><span class=cl>  <span class=k>display</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>margin</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span> <span class=err>//改为0</span>
+</span></span><span class=line><span class=cl>  <span class=k>border-radius</span><span class=p>:</span> <span class=mi>10</span><span class=kt>px</span><span class=p>;</span> <span class=err>//加个圆角</span>
+</span></span><span class=line><span class=cl>  <span class=k>padding</span><span class=p>:</span> <span class=mi>30</span><span class=kt>px</span> <span class=mi>30</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>@include</span> <span class=err>respond(xl)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>padding</span><span class=p>:</span> <span class=mi>15</span><span class=kt>px</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=o>&amp;,</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nc>menu-bottom-section</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>gap</span><span class=p>:</span> <span class=mi>30</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=err>@include</span> <span class=err>respond(xl)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>gap</span><span class=p>:</span> <span class=mi>25</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=o>&amp;</span><span class=p>.</span><span class=nc>show</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>display</span><span class=p>:</span> <span class=kc>flex</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>@</span><span class=k>include</span> <span class=nt>respond</span><span class=o>(</span><span class=nt>md</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>align-items</span><span class=o>:</span> <span class=nt>flex-end</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>display</span><span class=o>:</span> <span class=nt>flex</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>background-color</span><span class=o>:</span> <span class=nt>transparent</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>padding</span><span class=o>:</span> <span class=nt>0</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>box-shadow</span><span class=o>:</span> <span class=nt>none</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>margin</span><span class=o>:</span> <span class=nt>0</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=nt>li</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>position</span><span class=p>:</span> <span class=kc>relative</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>vertical-align</span><span class=p>:</span> <span class=kc>middle</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=err>@include</span> <span class=err>respond(md)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>width</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nt>svg</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=n>stroke-width</span><span class=p>:</span> <span class=mf>1.33</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=k>width</span><span class=p>:</span> <span class=mi>20</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>height</span><span class=p>:</span> <span class=mi>20</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nt>a</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>height</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>display</span><span class=p>:</span> <span class=kc>inline-flex</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>align-items</span><span class=p>:</span> <span class=kc>center</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>body</span><span class=o>-</span><span class=kc>text</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=k>gap</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>menu</span><span class=o>-</span><span class=kc>icon</span><span class=o>-</span><span class=n>separation</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nt>span</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>flex</span><span class=p>:</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=o>&amp;</span><span class=p>.</span><span class=nc>current</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=err>a</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>accent</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>font-weight</span><span class=p>:</span> <span class=kc>bold</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=err>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=滚动条>滚动条</h3><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span><span class=nt>将滚动条修改为圆角样式</span>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>菜单滚动条美化</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>menu</span><span class=p>::</span><span class=nd>-webkit-scrollbar</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>display</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>全局滚动条美化</span>
+</span></span><span class=line><span class=cl><span class=nt>html</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=err>::</span><span class=kp>-webkit-</span><span class=err>scrollbar</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>width</span><span class=p>:</span> <span class=mi>20</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>::</span><span class=nd>-webkit-scrollbar-track</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-color</span><span class=p>:</span> <span class=kc>transparent</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>::</span><span class=nd>-webkit-scrollbar-thumb</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#d6dee1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>border-radius</span><span class=p>:</span> <span class=mi>20</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>border</span><span class=p>:</span> <span class=mi>6</span><span class=kt>px</span> <span class=kc>solid</span> <span class=kc>transparent</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-clip</span><span class=p>:</span> <span class=kc>content-box</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>::</span><span class=nd>-webkit-scrollbar-thumb</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-color</span><span class=p>:</span> <span class=mh>#a8bbbf</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=加载进度条>加载进度条</h3><p>在 /layouts/partials/footer/custom.html 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span>
+</span></span><span class=line><span class=cl>  <span class=na>src</span><span class=o>=</span><span class=s>&#34;https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>link</span>
+</span></span><span class=line><span class=cl>  <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=na>href</span><span class=o>=</span><span class=s>&#34;https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>/&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>NProgress</span><span class=p>.</span><span class=nx>start</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>  <span class=nb>document</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;readystatechange&#34;</span><span class=p>,</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nb>document</span><span class=p>.</span><span class=nx>readyState</span> <span class=o>===</span> <span class=s2>&#34;interactive&#34;</span><span class=p>)</span> <span class=nx>NProgress</span><span class=p>.</span><span class=nx>inc</span><span class=p>(</span><span class=mf>0.8</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=nb>document</span><span class=p>.</span><span class=nx>readyState</span> <span class=o>===</span> <span class=s2>&#34;complete&#34;</span><span class=p>)</span> <span class=nx>NProgress</span><span class=p>.</span><span class=nx>done</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=修改布局>修改布局</h3><p>在 /assets/scss/grid.scss 中修改 left-sidebar 和 right-sidebar 的描述：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=p>.</span><span class=nc>left-sidebar</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>order</span><span class=p>:</span> <span class=mi>-3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=k>max-width</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=kc>left</span><span class=o>-</span><span class=n>sidebar</span><span class=o>-</span><span class=n>max</span><span class=o>-</span><span class=n>width</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>max-width</span><span class=p>:</span> <span class=mi>10</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>right-sidebar</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>order</span><span class=p>:</span> <span class=mi>-1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=err>//</span> <span class=k>max-width</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=kc>right</span><span class=o>-</span><span class=n>sidebar</span><span class=o>-</span><span class=n>max</span><span class=o>-</span><span class=n>width</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>max-width</span><span class=p>:</span> <span class=mi>20</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>///</span> <span class=err>Display</span> <span class=err>right</span> <span class=err>sidebar</span> <span class=err>when</span> <span class=k>min-width</span><span class=p>:</span> <span class=n>lg</span>
+</span></span><span class=line><span class=cl>  <span class=o>@</span><span class=n>include</span> <span class=nf>respond</span><span class=p>(</span><span class=n>lg</span><span class=p>)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>display</span><span class=o>:</span> <span class=kc>flex</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>把正文的占比改到了 70%, 原来的只有 50% 左右。</p><h3 id=在归档页增加标签云tags>在归档页增加标签云Tags</h3><p>在layouts/_default/archives.html里的<code>&lt;/header></code>后面加上如下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>{{- $taxonomy := $.Site.GetPage &#34;taxonomyTerm&#34; &#34;tags&#34; -}}
+</span></span><span class=line><span class=cl>{{- $terms := $taxonomy.Pages -}}
+</span></span><span class=line><span class=cl>{{ if $terms }}
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>section</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;widget tagCloud&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>h2</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;section-title&#34;</span><span class=p>&gt;</span>{{ $taxonomy.Title }}<span class=p>&lt;/</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;tagCloud-tags&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        {{ if ne (len $.Site.Taxonomies.tags) 0 }}
+</span></span><span class=line><span class=cl>            {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+</span></span><span class=line><span class=cl>                {{ $tagCount := len $taxonomy.Pages }}
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ &#34;</span><span class=err>/</span><span class=na>tags</span><span class=err>/&#34;</span> <span class=err>|</span> <span class=na>relURL</span> <span class=err>}}{{</span> <span class=err>$</span><span class=na>name</span> <span class=err>|</span> <span class=na>urlize</span> <span class=err>}}&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;tagCloud-tags&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    {{ $name }}<span class=p>&lt;</span><span class=nt>span</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;tagCloud-count&#34;</span><span class=p>&gt;</span>{{ $tagCount }}<span class=p>&lt;/</span><span class=nt>span</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            {{ end }}
+</span></span><span class=line><span class=cl>        {{ end }}
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>section</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>{{ end }}
+</span></span></code></pre></td></tr></table></div></div><p>以上代码用了<code>tagCloud-count</code>来修饰tag后面的数字，所以还需要在assets/scss/partials/widgets.scss里面加上如下代码，让数字变成浅灰：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=p>.</span><span class=nc>tagCloud</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=err>.tagCloud-count</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>body</span><span class=o>-</span><span class=kc>text</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=页面>页面</h2><h3 id=归档>归档</h3><h4 id=双栏>双栏</h4><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span> <span class=nt>归档页面两栏</span>
+</span></span><span class=line><span class=cl><span class=p>@</span><span class=k>media</span> <span class=o>(</span><span class=nt>min-width</span><span class=o>:</span> <span class=nt>1024px</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nc>article-list--compact</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>display</span><span class=p>:</span> <span class=k>grid</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>grid-template-columns</span><span class=p>:</span> <span class=mi>1</span><span class=n>fr</span> <span class=mi>1</span><span class=n>fr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>box-shadow</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>gap</span><span class=p>:</span> <span class=mi>1</span><span class=kt>rem</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=err>article</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>background</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>card</span><span class=o>-</span><span class=n>background</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=k>border</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>box-shadow</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>shadow</span><span class=o>-</span><span class=n>l2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=k>margin-bottom</span><span class=p>:</span> <span class=mi>8</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>border-radius</span><span class=p>:</span> <span class=mi>16</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=卡片缩放动画>卡片缩放动画</h4><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=c>/*-----------归档页面----------*/</span>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>归档页面卡片缩放</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-list--tile</span> <span class=nt>article</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transition</span><span class=p>:</span> <span class=mf>0.6</span><span class=kt>s</span> <span class=kc>ease</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-list--tile</span> <span class=nt>article</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transform</span><span class=p>:</span> <span class=nb>scale</span><span class=p>(</span><span class=mf>1.03</span><span class=p>,</span> <span class=mf>1.03</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=友链三栏>友链三栏</h3><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span> <span class=nt>友情链接三栏</span>
+</span></span><span class=line><span class=cl><span class=p>@</span><span class=k>media</span> <span class=o>(</span><span class=nt>min-width</span><span class=o>:</span> <span class=nt>1024px</span><span class=o>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nc>article-list--compact</span><span class=p>.</span><span class=nc>links</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>display</span><span class=p>:</span> <span class=k>grid</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>grid-template-columns</span><span class=p>:</span> <span class=mi>1</span><span class=n>fr</span> <span class=mi>1</span><span class=n>fr</span> <span class=mi>1</span><span class=n>fr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>box-shadow</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>gap</span><span class=p>:</span> <span class=mi>1</span><span class=kt>rem</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=err>article</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>background</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>card</span><span class=o>-</span><span class=n>background</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=k>border</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>box-shadow</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>shadow</span><span class=o>-</span><span class=n>l2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=k>margin-bottom</span><span class=p>:</span> <span class=mi>8</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=k>border-radius</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>card</span><span class=o>-</span><span class=n>border</span><span class=o>-</span><span class=n>radius</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=err>&amp;:nth-child(odd)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>margin-right</span><span class=p>:</span> <span class=mi>8</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=首页>首页</h3><h4 id=布局>布局</h4><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=c>/*主页布局间距调整*/</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>main-container</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>gap</span><span class=p>:</span> <span class=mi>50</span><span class=kt>px</span><span class=p>;</span> <span class=err>//文章宽度</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=err>@include</span> <span class=err>respond(md)</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span> <span class=mi>30</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>gap</span><span class=p>:</span> <span class=mi>40</span><span class=kt>px</span><span class=p>;</span> <span class=err>//中等屏幕时的文章宽度</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>related-contents</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>overflow-x</span><span class=p>:</span> <span class=kc>visible</span><span class=p>;</span> <span class=err>//显示隐藏的图标</span>
+</span></span><span class=line><span class=cl>  <span class=k>padding-bottom</span><span class=p>:</span> <span class=mi>15</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=右侧导航栏动画>右侧导航栏动画</h4><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=c>/*------------------右侧导航栏--------------*/</span>
+</span></span><span class=line><span class=cl><span class=o>//</span> <span class=nt>搜索菜单动画</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>search-form</span><span class=p>.</span><span class=nc>widget</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transition</span><span class=p>:</span> <span class=k>transform</span> <span class=mf>0.6</span><span class=kt>s</span> <span class=kc>ease</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>search-form</span><span class=p>.</span><span class=nc>widget</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transform</span><span class=p>:</span> <span class=nb>scale</span><span class=p>(</span><span class=mf>1.1</span><span class=p>,</span> <span class=mf>1.1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>归档小图标放大动画</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>widget</span><span class=p>.</span><span class=nc>archives</span> <span class=p>.</span><span class=nc>widget-archive--list</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transition</span><span class=p>:</span> <span class=k>transform</span> <span class=mf>0.3</span><span class=kt>s</span> <span class=kc>ease</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>widget</span><span class=p>.</span><span class=nc>archives</span> <span class=p>.</span><span class=nc>widget-archive--list</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transform</span><span class=p>:</span> <span class=nb>scale</span><span class=p>(</span><span class=mf>1.05</span><span class=p>,</span> <span class=mf>1.05</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>//</span><span class=nt>右侧标签放大动画</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>tagCloud</span> <span class=p>.</span><span class=nc>tagCloud-tags</span> <span class=nt>a</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>border-radius</span><span class=p>:</span> <span class=mi>10</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>font-size</span><span class=p>:</span> <span class=mf>1.4</span><span class=kt>rem</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>transition</span><span class=p>:</span> <span class=k>transform</span> <span class=mf>0.3</span><span class=kt>s</span> <span class=kc>ease</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>tagCloud</span> <span class=p>.</span><span class=nc>tagCloud-tags</span> <span class=nt>a</span><span class=p>:</span><span class=nd>hover</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>transform</span><span class=p>:</span> <span class=nb>scale</span><span class=p>(</span><span class=mf>1.1</span><span class=p>,</span> <span class=mf>1.1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=细节>细节</h2><h3 id=代码块>代码块</h3><h4 id=macos-风格红绿灯图标>macOS 风格红绿灯图标</h4><p>在 /assets/scss/custom.scss 中加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span> <span class=nt>macOS</span> <span class=nt>风格代码块</span>
+</span></span><span class=line><span class=cl><span class=p>.</span><span class=nc>article-content</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=err>.</span><span class=n>highlight</span><span class=p>:</span><span class=n>before</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>content</span><span class=o>:</span> <span class=s2>&#34;&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>display</span><span class=p>:</span> <span class=kc>block</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background</span><span class=p>:</span> <span class=nb>url</span><span class=p>(</span><span class=sx>/code-header.svg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>height</span><span class=p>:</span> <span class=mi>32</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>width</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-size</span><span class=p>:</span> <span class=mi>57</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-repeat</span><span class=p>:</span> <span class=kc>no-repeat</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>margin-bottom</span><span class=p>:</span> <span class=mi>5</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>background-position</span><span class=p>:</span> <span class=mi>-1</span><span class=kt>px</span> <span class=mi>2</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>在 static 文件夹下新建 code-header.svg，写入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-txt data-lang=txt><span class=line><span class=cl>// macOS 红绿灯图标
+</span></span><span class=line><span class=cl>&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; version=&#34;1.1&#34;  x=&#34;0px&#34; y=&#34;0px&#34; width=&#34;450px&#34; height=&#34;130px&#34;&gt;
+</span></span><span class=line><span class=cl>    &lt;ellipse cx=&#34;65&#34; cy=&#34;65&#34; rx=&#34;50&#34; ry=&#34;52&#34; stroke=&#34;rgb(220,60,54)&#34; stroke-width=&#34;2&#34; fill=&#34;rgb(237,108,96)&#34;/&gt;
+</span></span><span class=line><span class=cl>    &lt;ellipse cx=&#34;225&#34; cy=&#34;65&#34; rx=&#34;50&#34; ry=&#34;52&#34;  stroke=&#34;rgb(218,151,33)&#34; stroke-width=&#34;2&#34; fill=&#34;rgb(247,193,81)&#34;/&gt;
+</span></span><span class=line><span class=cl>    &lt;ellipse cx=&#34;385&#34; cy=&#34;65&#34; rx=&#34;50&#34; ry=&#34;52&#34;  stroke=&#34;rgb(27,161,37)&#34; stroke-width=&#34;2&#34; fill=&#34;rgb(100,200,86)&#34;/&gt;
+</span></span><span class=line><span class=cl>&lt;/svg&gt;
+</span></span></code></pre></td></tr></table></div></div><h3 id=固定块的高度>固定块的高度</h3><p>过长的内容影响观感，所以把 block 的高度限制在 20em，并隐藏滚动条
+在 /assets/scss/partials/layout/article.scss 中进行如下修改（已隐藏无关片段）：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=p>.</span><span class=nc>article-content</span> <span class=p>{</span>  <span class=err>//</span> <span class=err>line</span> <span class=err>205</span>
+</span></span><span class=line><span class=cl>   <span class=err>.highlight</span> <span class=err>{</span>  <span class=err>//</span> <span class=err>line</span> <span class=err>331</span>
+</span></span><span class=line><span class=cl>      <span class=k>background-color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=kc>pre</span><span class=o>-</span><span class=n>background</span><span class=o>-</span><span class=kc>color</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=err>-</span>     <span class=k>padding</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>card</span><span class=o>-</span><span class=n>padding</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=k>position</span><span class=p>:</span> <span class=kc>relative</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>      <span class=err>pre</span> <span class=err>{</span>  <span class=err>//</span> <span class=err>line</span> <span class=err>345</span>
+</span></span><span class=line><span class=cl>        <span class=k>margin</span><span class=p>:</span> <span class=kc>initial</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>padding</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>margin</span><span class=p>:</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>width</span><span class=p>:</span> <span class=kc>auto</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=err>+</span>       <span class=k>max-height</span><span class=p>:</span> <span class=mi>20</span><span class=kt>em</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=err>+</span>       <span class=n>scrollbar-width</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span> <span class=c>/* Firefox */</span>
+</span></span><span class=line><span class=cl><span class=err>+</span>       <span class=err>&amp;::</span><span class=kp>-webkit-</span><span class=err>scrollbar</span> <span class=err>{</span>
+</span></span><span class=line><span class=cl><span class=err>+</span>         <span class=k>display</span><span class=p>:</span> <span class=kc>none</span><span class=p>;</span> <span class=c>/* Chrome Safari */</span>
+</span></span><span class=line><span class=cl><span class=err>+</span>       <span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=err>}</span>
+</span></span><span class=line><span class=cl>  <span class=err>}</span>
+</span></span><span class=line><span class=cl><span class=err>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=使图床链接的图片居中>使图床链接的图片居中</h3><p>目前 Stack 默认只支持本地引用的图片居中，而在使用 url 图片链接时没有居中格式。在 /assets/scss/partials/layout/article.scss Line 256 处（同级任意位置）增加以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=o>//</span> <span class=nt>Center</span> <span class=nt>image</span> <span class=nt>from</span> <span class=nt>url</span> <span class=nt>source</span>
+</span></span><span class=line><span class=cl><span class=nt>p</span> <span class=o>&gt;</span> <span class=nt>img</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>display</span><span class=p>:</span> <span class=kc>block</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>margin</span><span class=p>:</span> <span class=mi>0</span> <span class=kc>auto</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>max-width</span><span class=p>:</span> <span class=mi>100</span><span class=kt>%</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>height</span><span class=p>:</span> <span class=kc>auto</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=鸣谢>鸣谢</h2><ol><li><a class=link href=https://www.xalaok.top/post/stack-modify/ target=_blank rel=noopener>Hugo Stack 魔改美化</a></li><li><a class=link href=https://thirdshire.com/hugo-stack-renovation-part-three/ target=_blank rel=noopener>Hugo Stack 主题装修笔记 Part 3</a></li></ol></section><footer class=article-footer><section class=article-tags><a href=/hugo-stack/tags/hugo/>Hugo</a></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/hugo-stack/posts/2025/hugo%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/><div class=article-details><h2 class=article-title>Hugo使用指南</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2025 Peach</section><section class=powerby>欢迎访问Peach的博客<br>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/hugo-stack/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script><script src=https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js crossorigin=anonymous></script><link rel=stylesheet href=https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css crossorigin=anonymous><script>NProgress.start(),document.addEventListener("readystatechange",()=>{document.readyState==="interactive"&&NProgress.inc(.8),document.readyState==="complete"&&NProgress.done()})</script></body></html>
